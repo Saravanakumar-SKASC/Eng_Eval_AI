@@ -4,6 +4,7 @@ A machine learning project that automatically classifies customer support emails
 
 ## Team
 Saravanakumar — model architecture & training
+
 Praveen — data preprocessing & pipeline
 
 Takes raw customer emails from two datasets (AppGallery & Purchasing), cleans them, converts them to numbers, and trains a classifier
