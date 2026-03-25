@@ -1,26 +1,27 @@
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from Config import Config
+import random
+
+seed = 0
+random.seed(seed)
+np.random.seed(seed)
+
+
 class Data():
-    def __init__(self,
-                 X: np.ndarray,
-                 df: pd.DataFrame) -> None:
-
+    def __init__(self, X: np.ndarray, df: pd.DataFrame) -> None:
         self.embeddings = X
-
-        # Extract target label (y2 by default from Config)
         self.y = df[Config.CLASS_COL]
 
-        # Drop rows where label is missing
         valid_mask = self.y.notna() & (self.y.astype(str).str.strip() != '')
         X_clean  = X[valid_mask]
         df_clean = df[valid_mask].reset_index(drop=True)
         y_clean  = self.y[valid_mask].reset_index(drop=True)
 
-        # Stratified 80/20 train-test split
         indices = np.arange(len(X_clean))
         idx_train, idx_test = train_test_split(
-            indices,
-            test_size=0.2,
-            random_state=seed,
-            stratify=y_clean
+            indices, test_size=0.2, random_state=seed, stratify=y_clean
         )
 
         self.X_train  = X_clean[idx_train]
