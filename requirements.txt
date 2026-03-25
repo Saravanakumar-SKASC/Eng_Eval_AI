@@ -1,0 +1,18 @@
+# ─────────────────────────────────────────────────────────────
+# ENGEVALAI_CA1 — Requirements
+# Python 3.9 or higher required (project was built on 3.9)
+# Install with:  pip install -r requirements.txt
+# ─────────────────────────────────────────────────────────────
+
+# Core data & ML
+numpy>=1.24.0
+pandas>=1.5.0
+scikit-learn>=1.2.0
+scipy>=1.10.0
+
+# Translation (used in preprocess.py → translate_to_en)
+# If offline or no API key needed — the code gracefully falls back
+deep-translator>=1.11.4
+
+# Language detection (used inside translate_to_en)
+langdetect>=1.0.9
